@@ -11,6 +11,7 @@ What it provides
 <li>Provides correct translation among currency codes used by Magento and the ones used by Gestpay (UIC codes)</li>
 <li>Bypasses limitation of Gestpay which provides only one return url therefore allowing customer to return to the same website language where he/she has purchased. Mostly useful when you have set website code in your URLs</li>
 <li>Absence of PHP's SOAP extension is logged instead of generating an exception</li>
+<li>After a negative payment transaction items are restored back in cart</li>
 </ul>
 
 Other features being published soon.
