@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Isiweb
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@isiweb.it so we can send you a copy immediately.
+ *
+ * @category    Isiweb
+ * @package     Isiweb_Magestpay
+ * @copyright   Copyright (c) 2015 Isiweb S.r.l. (http://www.isiweb.it)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Isiweb_Magestpay>
+            <version>1.1.0</version>
+        </Isiweb_Magestpay>
+    </modules>
+    <global>
+        <blocks>
+            <isiweb_magestpay>
+                <class>Isiweb_Magestpay_Block</class>
+            </isiweb_magestpay>
+        </blocks>
+        <helpers>
+            <isiweb_magestpay>
+                <class>Isiweb_Magestpay_Helper</class>
+            </isiweb_magestpay>
+        </helpers>
+        <models>
+            <isiweb_magestpay>
+                <class>Isiweb_Magestpay_Model</class>
+            </isiweb_magestpay>
+        </models>
+    </global>
+    <frontend>
+        <routers>
+            <isiweb_magestpay>
+                <use>standard</use>
+                <args>
+                    <module>Isiweb_Magestpay</module>
+                    <frontName>magestpay</frontName>
+                </args>
+            </isiweb_magestpay>
+        </routers>
+	</frontend>
+    <default>
+        <payment>
+            <gestpay>
+                <active>0</active>
+                <model>isiweb_magestpay/gestpay</model>
+                <enable_test>0</enable_test>
+                <enable_logging>0</enable_logging>
+                <title>GestPay (Banca Sella)</title>
+                <instructions>You will be redirected to the payment page</instructions>
+                <allowspecific>0</allowspecific>
+                <language>0</language>
+            </gestpay>
+        </payment>
+    </default>
+</config>
