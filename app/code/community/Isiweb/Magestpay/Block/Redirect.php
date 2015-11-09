@@ -23,15 +23,21 @@ class Isiweb_Magestpay_Block_Redirect extends Mage_Core_Block_Abstract
     protected function _toHtml()
     {
         $model = Mage::getModel('isiweb_magestpay/gestpay');
+		$model->getHelper()->log('Generating redirection page for customer ...');
         $form = new Varien_Data_Form();
         $form->setAction($model->getOrderPaymentRedirectUrl())
              ->setId('gestpay_checkout')
              ->setName('gestpay_checkout')
              ->setMethod('GET')
              ->setUseContainer(true);
-        foreach ($model->getCheckoutFormFields() as $key => $value) {
+		
+		// Invoke server to server communication to encrypt transaction
+		// data. Results are inserted in form as hidden fields
+		$hiddenFields = $model->getCheckoutFormFields();
+        foreach ($hiddenFields as $key => $value) {
             $form->addField($key, 'hidden', array('name'=>$key, 'value'=>$value));
         }
+		
         $idSuffix = Mage::helper('core')->uniqHash();
         $submitButton = new Varien_Data_Form_Element_Submit(array(
             'value'    => $this->__('Click here if you are not redirected within 10 seconds...'),
