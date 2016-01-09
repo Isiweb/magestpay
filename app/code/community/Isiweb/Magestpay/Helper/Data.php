@@ -74,9 +74,9 @@ class Isiweb_Magestpay_Helper_Data extends Mage_Core_Helper_Abstract {
     public function restoreQuote()
     {
         $order = $this->_getCheckoutSession()->getLastRealOrder();
-        if ($order->getId()) {
+        if ($order !== null && $order->getId()) {
             $quote = $this->_getQuote($order->getQuoteId());
-            if ($quote->getId()) {
+            if ($quote !== null && $quote->getId()) {
                 $quote->setIsActive(1)
                     ->setReservedOrderId(null)
                     ->save();
